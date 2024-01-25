@@ -14,7 +14,7 @@ const state = {
   questions: [
     {
       id: 220,
-      question: "What does CPU stand for?",
+      question: "1. What does CPU stand for?",
       options: [
         { id: 10, text: "Central Processing Unit", isCorrect: true },
         { id: 20, text: "Computer Personal Unit", isCorrect: false },
@@ -25,7 +25,8 @@ const state = {
     },
     {
       id: 230,
-      question: "Which programming language is often used for web development?",
+      question:
+        "2. Which programming language is often used for web development?",
       options: [
         { id: 50, text: "Python", isCorrect: false },
         { id: 51, text: "java", isCorrect: false },
@@ -36,7 +37,7 @@ const state = {
     },
     {
       id: 240,
-      question: "What does HTML stand for?",
+      question: "3. What does HTML stand for?",
       options: [
         { id: 50, text: "Hypertext Markup Language", isCorrect: true },
         { id: 51, text: "Hypelink Markup Language", isCorrect: false },
@@ -47,7 +48,7 @@ const state = {
     },
     {
       id: "250",
-      question: "The human heart is ",
+      question: "1. The human heart is ",
       options: [
         { id: 54, text: "Neurogenic heart", isCorrect: false },
         { id: 55, text: "Myogenic heart", isCorrect: true },
@@ -58,7 +59,7 @@ const state = {
     },
     {
       id: "260",
-      question: "Spermology is the study of ",
+      question: "2. Spermology is the study of ",
       options: [
         { id: 59, text: "Seed", isCorrect: true },
         { id: 60, text: "leaf", isCorrect: false },
@@ -69,7 +70,7 @@ const state = {
     },
     {
       id: "270",
-      question: "Who is known as father of Zoology ",
+      question: "3. Who is known as father of Zoology ",
       options: [
         { id: 55, text: "Darwin", isCorrect: false },
         { id: 56, text: "Aristotlee", isCorrect: false },
@@ -83,6 +84,8 @@ const state = {
 
 const appdiv = document.querySelector("#app");
 appdiv.style.display = "none";
+const total = document.querySelector(".total-div");
+total.style.display = "none";
 const quizForm = document.getElementById("quizForm");
 const categorySelect = document.getElementById("option");
 
@@ -94,6 +97,7 @@ document.getElementById("submit").addEventListener("click", function (e) {
   if (selectedValue) {
     console.log(selectedValue);
     appdiv.style.display = "block";
+    total.style.display = "block";
     quizdiv.style.display = "none";
     updateQuizListUI(selectedValue);
   } else {
@@ -150,7 +154,7 @@ function makeQuizDiv(quiz) {
       }
     } else {
       resDiv.innerHTML = "Please select an option.";
-      resDiv.style.color = "yellow";
+      resDiv.style.color = "#FCC203";
     }
   });
   for (let i = 0; i < quiz.options.length; i++) {
@@ -180,6 +184,7 @@ function appendToApp(quizDiv) {
 }
 function updateQuizListUI(sub) {
   quizForm.style.display = "none";
+  total.style.display = "block";
   appdiv.style.display = "block";
   setCategoryInStorage(sub);
   const app = document.querySelector("#app");
@@ -199,6 +204,7 @@ function goBack() {
   const appdiv = document.querySelector("#app");
   const quizdiv = document.querySelector("#quizForm");
   appdiv.style.display = "none";
+  total.style.display = "none";
   quizdiv.style.display = "block";
   setCategoryInStorage("");
 }
